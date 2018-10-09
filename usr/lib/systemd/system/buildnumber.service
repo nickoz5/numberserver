@@ -1,0 +1,11 @@
+[Unit]
+Description=Build Number Service
+After=multi-user.target
+Conflicts=getty@tty1.service
+
+[Service]
+Type=simple
+ExecStart=/etc/init.d/./buildnumberserver start
+
+[Install]
+WantedBy=multi-user.target
