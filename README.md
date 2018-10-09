@@ -1,7 +1,9 @@
-# numberserver
+# BuildNumber
 
-To run BuildNumber as a service on a CentOS node
+To run BuildNumber as a service on a CentOS node:
+
 Put the /etc/init.d and /usr/lib/systemd/system scripts on place
+
 Then, run the following commands:
 ```
 > systemctl daemon-reload
