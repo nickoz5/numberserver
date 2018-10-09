@@ -1,0 +1,22 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides: buildnumberserver
+# Should-Start: $time sendmail
+# Should-Stop: $time sendmail
+# Default-Start: 3 5
+# Default-Stop: 0 1 2 6
+# Short-Description: Build Number Server
+# Description: Build Number Server
+### END INIT INFO
+
+
+case "$1" in
+    start)
+	cd /opt/buildnumberserver
+	python BuildNumber.py --daemon --pidfile=/var/run/buildnumber.pid
+    ;; 
+    stop)
+        pkill --pidfile /var/run/apps/buildnumber.pid
+    ;;
+
+esac
