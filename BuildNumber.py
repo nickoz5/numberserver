@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import socket
+import os
 from urllib.parse import urlparse
 
 class NumberServer(BaseHTTPRequestHandler):
@@ -21,7 +22,7 @@ class NumberServer(BaseHTTPRequestHandler):
         # Try and open number file and read number
         try:
             index = self.path.index("?")-1 if self.path.find("?") != -1 else len(self.path)
-            fname = self.path[1:1+index] + "_releasenumber.txt"
+            fname = os.path.join("data", self.path[1:1+index] + "_releasenumber.txt")
             f = open(fname, "r")
             number = int(f.read())
             f.close()
@@ -55,7 +56,10 @@ def run(server_class=HTTPServer, handler_class=NumberServer, port=80):
 if __name__ == "__main__":
     from sys import argv
 
-    if len(argv) == 2:
+    print (len(argv))
+    print (argv[1])
+
+    if len(argv) > 2:
         run(port=int(argv[1]))
     else:
         run()
