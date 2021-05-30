@@ -56,9 +56,6 @@ def run(server_class=HTTPServer, handler_class=NumberServer, port=80):
 if __name__ == "__main__":
     from sys import argv
 
-    print (len(argv))
-    print (argv[1])
-
     if len(argv) > 2:
         run(port=int(argv[1]))
     else:
